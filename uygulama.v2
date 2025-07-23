@@ -1,0 +1,15 @@
+
+
+if __name__ == "__main__":
+    not_ekle()
+  def not_ekle():
+    while True:
+        not_metni = input("Notunuzu yazın (bitirmek için boş bırakın): ")
+        if not not_metni:
+            break
+        with open("notlar.txt", "a") as dosya:
+            dosya.write(not_metni + "\n")
+        print("Notunuz kaydedildi!")
+
+if __name__ == "__main__":
+    not_ekle()
