@@ -1,0 +1,39 @@
+def not_ekle():
+    not_metni = input("Yeni notunuzu yazın: ")
+    with open("notlar.txt", "a") as dosya:
+        dosya.write(not_metni + "\n")
+    print("Notunuz kaydedildi.\n")
+
+def notlari_goster():
+    try:
+        with open("notlar.txt", "r") as dosya:
+            notlar = dosya.readlines()
+            if notlar:
+                print("Kayıtlı Notlar:")
+                for i, notsatiri in enumerate(notlar, 1):
+                    print(f"{i}. {notsatiri.strip()}")
+            else:
+                print("Henüz hiç not eklenmemiş.")
+    except FileNotFoundError:
+        print("Henüz notlar dosyası yok.")
+
+def menu():
+    while True:
+        print("\n--- Not Defteri ---")
+        print("1 - Not Ekle")
+        print("2 - Notları Göster")
+        print("3 - Çıkış")
+        secim = input("Seçiminiz: ")
+
+        if secim == "1":
+            not_ekle()
+        elif secim == "2":
+            notlari_goster()
+        elif secim == "3":
+            print("Çıkılıyor...")
+            break
+        else:
+            print("Geçersiz seçim.")
+
+if __name__ == "__main__":
+    menu()
